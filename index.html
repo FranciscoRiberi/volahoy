@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#FFB52B">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 26 26%27%3E%3Crect width=%2726%27 height=%2726%27 rx=%276%27 fill=%27%23171717%27/%3E%3Ccircle cx=%2713%27 cy=%279.5%27 r=%274.6%27 fill=%27%23FFC83D%27/%3E%3Cpath d=%27M3.5 17.5h19%27 stroke=%27%23FFFCF7%27 stroke-width=%271.8%27 stroke-linecap=%27round%27/%3E%3Cpath d=%27M7 21.3h12%27 stroke=%27%23FFFCF7%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 opacity=%27.5%27/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 26 26%27%3E%3Crect width=%2726%27 height=%2726%27 rx=%274%27 fill=%27%23171717%27/%3E%3Ccircle cx=%2713%27 cy=%279.5%27 r=%274.6%27 fill=%27%23FFC83D%27/%3E%3Cpath d=%27M3.5 17.5h19%27 stroke=%27%23FFFCF7%27 stroke-width=%271.8%27 stroke-linecap=%27round%27/%3E%3Cpath d=%27M7 21.3h12%27 stroke=%27%23FFFCF7%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 opacity=%27.5%27/%3E%3C/svg%3E">
 <link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">
 <title>Vuelos privados en Córdoba desde USD 50 | Volahoy</title>
 
@@ -98,7 +98,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
 
 <style>
 :root{
@@ -122,8 +122,15 @@
   --on-photo-2:rgba(255,252,247,.78);
   --wa:#25D366;
 
-  --sans:"Inter","SF Pro Text",-apple-system,"Helvetica Neue",Arial,sans-serif;
-  --display:"Instrument Sans","Inter","SF Pro Display",-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --sans:"Instrument Sans","SF Pro Text",-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --display:"Instrument Sans","SF Pro Display",-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  /* geometría: cantos vivos, nada de píldoras */
+  --r-btn:5px; --r-card:10px; --r-field:6px;
+
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
@@ -161,7 +168,12 @@ a{color:inherit}
 .section{padding-block:clamp(60px,9vw,110px)}
 .h2{font-size:clamp(1.72rem,5.6vw,2.9rem)}
 .lede{color:var(--ink-2); font-size:clamp(.95rem,2.4vw,1.08rem); margin-top:10px}
-.kicker{font-size:11px; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--ink-3)}
+.kicker{font-family:var(--mono); font-size:10.5px; font-weight:500; letter-spacing:.17em;
+  text-transform:uppercase; color:var(--ink-3)}
+.label{display:flex; align-items:center; gap:11px; margin-bottom:18px;
+  font-family:var(--mono); font-size:10.5px; font-weight:500; letter-spacing:.17em;
+  text-transform:uppercase; color:var(--ink-3)}
+.label::before{content:""; width:24px; height:1px; background:var(--line-2); flex:none}
 
 /* ---------- wordmark ---------- */
 .mark{display:inline-flex; align-items:center; gap:8px; text-decoration:none}
@@ -169,22 +181,41 @@ a{color:inherit}
 .mark b{font-family:var(--display); font-weight:600; font-size:11.5px; letter-spacing:.19em; text-transform:uppercase; white-space:nowrap}
 
 /* ---------- botones ---------- */
-.btn{display:inline-flex; align-items:center; justify-content:center; gap:9px;
-  padding:16px 24px; border-radius:999px; border:1px solid transparent;
-  font-weight:600; font-size:15.5px; letter-spacing:-.01em; cursor:pointer; text-decoration:none;
-  transition:transform .2s cubic-bezier(.2,.7,.3,1), background-color .2s ease, box-shadow .2s ease, border-color .2s ease;
+/* Botón "talón de vuelo": etiqueta a la izquierda, celda troquelada a la derecha.
+   Sin píldoras, sin glow, sin translateY. */
+.btn{display:grid; grid-template-columns:1fr 48px; align-items:stretch;
+  border-radius:var(--r-btn); border:1px solid transparent; overflow:hidden;
+  font-weight:600; font-size:15.5px; letter-spacing:-.008em; cursor:pointer; text-decoration:none;
+  transition:background-color .24s ease, border-color .24s ease, color .24s ease;
   -webkit-tap-highlight-color:transparent}
-.btn:active{transform:scale(.985)}
+.btn-l{display:flex; align-items:center; gap:10px; padding:16px 18px; text-align:left; line-height:1.2}
+.btn-r{display:grid; place-items:center; border-left:1px solid currentColor;
+  transition:background-color .24s ease}
+.btn-r svg{transition:transform .24s cubic-bezier(.2,.7,.3,1)}
+.btn:hover .btn-r svg{transform:translateX(3px)}
+.btn:active{background-position:0}
 .btn-full{width:100%}
-.btn-solar{background:linear-gradient(180deg,var(--sun),var(--amber)); color:#171717;
-  box-shadow:0 10px 24px -12px rgba(255,148,24,.8)}
-.btn-solar:hover{background:linear-gradient(180deg,#FFD25C,var(--orange)); box-shadow:0 15px 30px -13px rgba(255,148,24,.9)}
-.btn-glass{background:rgba(16,10,4,.5); border-color:rgba(255,252,247,.34); color:var(--on-photo); backdrop-filter:blur(8px)}
-.btn-glass:hover{background:rgba(16,10,4,.68); border-color:rgba(255,252,247,.62)}
+
+.btn-solar{background:var(--amber); color:#171717}
+.btn-solar .btn-r{border-left-color:rgba(23,23,23,.22)}
+.btn-solar:hover{background:var(--sun)}
+.btn-solar:hover .btn-r{background:rgba(23,23,23,.09)}
+
+.btn-glass{background:rgba(14,9,3,.42); border-color:rgba(255,252,247,.3); color:var(--on-photo);
+  backdrop-filter:blur(8px)}
+.btn-glass .btn-r{border-left-color:rgba(255,252,247,.3)}
+.btn-glass:hover{background:rgba(14,9,3,.62); border-color:rgba(255,252,247,.55)}
+.btn-glass:hover .btn-r{background:rgba(255,252,247,.1)}
+
 .btn-white{background:var(--warm-white); color:#171717}
+.btn-white .btn-r{border-left-color:rgba(23,23,23,.16)}
 .btn-white:hover{background:#fff}
+.btn-white:hover .btn-r{background:rgba(23,23,23,.07)}
+
 .btn-dark{background:var(--carbon); color:#FFFCF7}
-.btn-dark:hover{background:#2A2A2A}
+.btn-dark .btn-r{border-left-color:rgba(255,252,247,.22)}
+.btn-dark:hover{background:#262421}
+.btn-dark:hover .btn-r{background:rgba(255,252,247,.1)}
 
 /* ---------- topbar ---------- */
 .topbar{position:absolute; z-index:20; top:0; left:0; right:0; display:flex; align-items:center;
@@ -195,6 +226,8 @@ a{color:inherit}
 /* ---------- foto ---------- */
 .photo{position:absolute; inset:0; overflow:hidden}
 .photo img{width:100%; height:100%; object-fit:cover}
+.photo::after{content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:var(--grain); background-size:160px; opacity:.07; mix-blend-mode:overlay}
 .veil{position:absolute; inset:0}
 
 /* ---------- HERO ---------- */
@@ -203,20 +236,27 @@ a{color:inherit}
 .hero-in{position:relative; z-index:10; width:100%; max-width:1120px; margin-inline:auto; padding:0 20px 28px; color:var(--on-photo)}
 @media(min-width:900px){ .hero-in{padding:0 40px 44px} }
 .hero h1{font-size:clamp(1.95rem,7.2vw,3.7rem); letter-spacing:-.04em; margin-bottom:16px; max-width:17ch}
-.hero h1 em{font-style:normal; color:var(--sun)}
+.hero h1 em{font-family:var(--serif); font-style:italic; font-weight:400;
+  color:var(--sun); letter-spacing:-.01em}
 .hero .sub{color:var(--on-photo-2); font-size:clamp(.98rem,3.2vw,1.16rem); max-width:32ch; line-height:1.5}
-.price{display:inline-flex; align-items:baseline; gap:7px; margin-top:18px; padding:9px 16px;
-  border-radius:999px; background:rgba(255,200,61,.15); border:1px solid rgba(255,200,61,.45);
-  color:var(--sun); font-family:var(--display); font-weight:600; font-size:15px; letter-spacing:-.015em}
-.price span{font-family:var(--sans); font-weight:500; font-size:12.5px; letter-spacing:0; color:var(--on-photo-2)}
+.price{display:inline-grid; grid-auto-flow:column; align-items:center; margin-top:20px;
+  border:1px solid rgba(255,200,61,.4); border-radius:var(--r-btn); overflow:hidden;
+  font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--sun)}
+.price span{padding:8px 12px; color:var(--on-photo-2); border-right:1px solid rgba(255,200,61,.3);
+  font-size:10.5px; letter-spacing:.16em}
+.price b{padding:8px 14px; font-weight:500; background:rgba(255,200,61,.1)}
 .hero-cta{display:flex; flex-direction:column; gap:10px; margin-top:22px}
 @media(min-width:720px){ .hero-cta{flex-direction:row; max-width:640px} .hero-cta .btn{flex:1} }
-.hero-meta{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:30px; padding-top:24px;
-  border-top:1px solid rgba(255,252,247,.18)}
-.hero-meta li{list-style:none; display:flex; flex-direction:column; align-items:center; gap:9px; text-align:center}
-.hero-meta .badge{width:34px; height:34px; border-radius:50%; display:grid; place-items:center;
-  background:rgba(255,200,61,.16); border:1px solid rgba(255,200,61,.42); color:var(--sun)}
-.hero-meta span{font-size:11.5px; line-height:1.3; color:var(--on-photo-2); max-width:11ch}
+.hero-meta{display:grid; grid-template-columns:repeat(3,1fr); margin-top:32px; padding:0; list-style:none;
+  border-top:1px solid rgba(255,252,247,.2)}
+.hero-meta li{display:flex; flex-direction:column; gap:8px; padding:16px 12px 0;
+  border-left:1px solid rgba(255,252,247,.14)}
+.hero-meta li:first-child{border-left:0; padding-left:0}
+.hero-meta .badge{color:var(--sun); display:block; height:15px}
+.hero-meta span{font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase;
+  line-height:1.45; color:var(--on-photo-2)}
+.coord{display:block; margin-top:22px; font-family:var(--mono); font-size:10px;
+  letter-spacing:.13em; color:rgba(255,252,247,.42)}
 
 /* ---------- MENÚ ---------- */
 .nav{position:fixed; inset:0; z-index:80; background:var(--bg); display:flex; flex-direction:column; padding:20px}
@@ -226,7 +266,7 @@ a{color:inherit}
   font-size:clamp(1.9rem,7.4vw,2.8rem); letter-spacing:-.035em; padding:8px 0; transition:color .2s ease}
 .nav ul a:hover{color:var(--burnt)}
 .nav-foot{color:var(--ink-3); font-size:12.5px; padding-bottom:6px}
-.iconbtn{width:38px; height:38px; border-radius:50%; display:grid; place-items:center; flex:none;
+.iconbtn{width:38px; height:38px; border-radius:var(--r-field); display:grid; place-items:center; flex:none;
   background:var(--surface-2); border:1px solid var(--line); cursor:pointer;
   transition:background-color .2s ease, border-color .2s ease}
 .iconbtn:hover{border-color:var(--pick-line); background:var(--pick-bg)}
@@ -235,39 +275,51 @@ a{color:inherit}
 .cards{display:grid; gap:14px; margin-top:26px}
 @media(min-width:900px){ .cards{grid-template-columns:1fr 1fr; gap:22px} }
 .card{position:relative; display:block; width:100%; text-align:left; padding:0; cursor:pointer; border:0;
-  border-radius:20px; overflow:hidden; background:#241408; aspect-ratio:16/11; box-shadow:var(--shadow);
+  border-radius:var(--r-card); overflow:hidden; background:#241408; aspect-ratio:16/11; box-shadow:var(--shadow);
   transition:box-shadow .3s ease}
 @media(min-width:900px){ .card{aspect-ratio:4/3} }
-.card .photo img{transition:transform .7s cubic-bezier(.2,.7,.3,1)}
+.card .photo img{transition:transform 1.1s cubic-bezier(.2,.7,.3,1)}
 .card:hover{box-shadow:var(--shadow-lift)}
-.card:hover .photo img{transform:scale(1.045)}
+.card:hover .photo img{transform:scale(1.035)}
 .card .veil{background:linear-gradient(to top, rgba(16,9,3,.9) 0%, rgba(16,9,3,.4) 42%, rgba(16,9,3,.06) 72%)}
 .card-body{position:relative; z-index:10; height:100%; display:flex; flex-direction:column; justify-content:flex-end;
   padding:20px; color:var(--on-photo)}
-.card-badge{width:34px; height:34px; border-radius:50%; display:grid; place-items:center; margin-bottom:12px;
-  background:rgba(255,252,247,.14); border:1px solid rgba(255,252,247,.4); color:var(--on-photo)}
+.card::before{content:""; position:absolute; z-index:12; top:0; left:0; right:0; height:1px;
+  background:var(--sun); transform:scaleX(0); transform-origin:left;
+  transition:transform .55s cubic-bezier(.2,.7,.3,1)}
+.card:hover::before{transform:scaleX(1)}
+.card-badge{display:block; height:16px; margin-bottom:14px; color:var(--sun)}
 .card-t{display:block; font-family:var(--display); font-weight:600; letter-spacing:-.03em; line-height:1.05;
   font-size:clamp(1.35rem,4.6vw,1.8rem); margin-bottom:6px}
 .card-p{display:block; color:var(--on-photo-2); font-size:13.5px; line-height:1.45; max-width:30ch; padding-right:52px}
-.card-go{position:absolute; right:18px; bottom:18px; z-index:11; width:40px; height:40px; border-radius:50%;
-  display:grid; place-items:center; background:var(--warm-white); color:#171717;
-  transition:transform .3s cubic-bezier(.2,.7,.3,1), background-color .3s ease}
-.card:hover .card-go{transform:translateX(3px); background:var(--sun)}
+.card-go{position:absolute; right:16px; bottom:16px; z-index:11; width:40px; height:38px;
+  border-radius:var(--r-btn); display:grid; place-items:center;
+  background:rgba(14,9,3,.34); border:1px solid rgba(255,252,247,.42); color:var(--on-photo);
+  backdrop-filter:blur(6px);
+  transition:background-color .3s ease, border-color .3s ease, color .3s ease}
+.card-go svg{transition:transform .3s cubic-bezier(.2,.7,.3,1)}
+.card:hover .card-go{background:var(--amber); border-color:var(--amber); color:#171717}
+.card:hover .card-go svg{transform:translateX(3px)}
 
 /* ---------- PASOS ---------- */
 .steps{background:var(--surface-2)}
-.steplist{list-style:none; margin:28px 0 0; padding:0}
-.step{position:relative; display:grid; grid-template-columns:38px 1fr; gap:16px; padding-bottom:26px}
+.steplist{list-style:none; margin:30px 0 0; padding:0}
+/* ruta de vuelo: línea punteada + waypoint en rombo, como una carta de navegación */
+.step{position:relative; display:grid; grid-template-columns:26px 1fr; gap:18px; padding-bottom:30px}
 .step:last-child{padding-bottom:0}
-.step::before{content:""; position:absolute; left:18px; top:22px; bottom:2px; width:1px; background:var(--line-2)}
+.step::before{content:""; position:absolute; left:5px; top:16px; bottom:0; width:0;
+  border-left:1px dashed var(--line-2)}
 .step:last-child::before{display:none}
-.num{font-family:var(--display); font-weight:600; font-size:1.05rem; letter-spacing:-.02em; color:var(--amber);
-  font-variant-numeric:tabular-nums; position:relative; z-index:2; background:var(--surface-2); padding-bottom:6px; line-height:1.2}
-.step h3{font-size:1.06rem; margin-bottom:3px; letter-spacing:-.02em}
+.wp{width:11px; height:11px; margin-top:5px; background:var(--amber); border-radius:1.5px;
+  transform:rotate(45deg); position:relative; z-index:2;
+  box-shadow:0 0 0 5px var(--surface-2)}
+.step:last-child .wp{background:transparent; border:1.5px solid var(--burnt)}
+.num{display:block; font-family:var(--mono); font-weight:500; font-size:10.5px; letter-spacing:.17em;
+  color:var(--burnt); margin-bottom:7px}
+.step h3{font-size:1.06rem; margin-bottom:4px; letter-spacing:-.022em}
 .step p{color:var(--ink-2); font-size:14.2px; max-width:44ch}
-.chip{display:inline-block; margin-top:22px; padding:11px 20px; border-radius:999px;
-  background:var(--pick-bg); border:1px solid rgba(255,148,24,.36); color:var(--burnt);
-  font-size:13px; font-weight:600}
+.chip{display:inline-block; margin-top:26px; padding-top:16px; border-top:1px solid var(--line-2);
+  font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--burnt)}
 
 /* ---------- EXPERIENCIA ---------- */
 .exp{position:relative; min-height:min(80svh,720px); display:flex; background:#241408; color:var(--on-photo)}
@@ -277,39 +329,41 @@ a{color:inherit}
 @media(min-width:900px){ .exp-in{padding:56px 40px} }
 .exp h2{font-size:clamp(1.72rem,6.2vw,3.1rem); max-width:15ch; margin-top:auto; letter-spacing:-.038em}
 .exp p{color:var(--on-photo-2); max-width:36ch; margin-top:14px; font-size:15px; line-height:1.55}
-.quote{margin-top:26px; padding:18px 20px; border:1px solid rgba(255,252,247,.26); border-radius:16px;
-  background:rgba(16,9,3,.32); backdrop-filter:blur(4px);
-  font-family:var(--display); font-size:clamp(1rem,3.4vw,1.25rem); letter-spacing:-.022em; line-height:1.3;
-  font-style:italic; max-width:26ch}
+.quote{margin-top:28px; padding-left:20px; border-left:1px solid rgba(255,200,61,.55);
+  font-family:var(--serif); font-style:italic; font-weight:400;
+  font-size:clamp(1.2rem,4.4vw,1.7rem); letter-spacing:-.005em; line-height:1.28; max-width:24ch}
 
 /* ---------- INFO ---------- */
-.panel{background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:24px; box-shadow:var(--shadow)}
-.panel-head{display:flex; align-items:center; gap:11px; margin-bottom:12px}
-.panel-ic{width:34px; height:34px; border-radius:50%; display:grid; place-items:center; flex:none;
-  background:var(--pick-bg); color:var(--burnt)}
+.panel{border-top:1px solid var(--ink); padding-top:20px}
+.panel-head{display:flex; align-items:center; gap:11px; margin-bottom:10px}
+.panel-ic{display:block; color:var(--burnt); flex:none}
 .panel h3{font-size:1.16rem; letter-spacing:-.025em}
 .panel p{color:var(--ink-2); font-size:14.2px; max-width:60ch}
 
-.ask{margin-top:14px; text-align:center; background:var(--pick-bg); border:1px solid rgba(255,148,24,.28);
-  border-radius:20px; padding:28px 22px}
-.ask .panel-ic{margin:0 auto 12px}
+.ask{margin-top:44px; background:var(--pick-bg); border:1px solid rgba(255,148,24,.26);
+  border-radius:var(--r-card); padding:26px 22px; display:grid; gap:16px}
+@media(min-width:760px){ .ask{grid-template-columns:1fr auto; align-items:center; gap:32px; padding:28px} }
+.ask .panel-ic{margin-bottom:10px}
 .ask h3{font-size:1.16rem; margin-bottom:6px; letter-spacing:-.025em}
-.ask p{color:var(--ink-2); font-size:14px; max-width:34ch; margin:0 auto 18px}
+.ask p{color:var(--ink-2); font-size:14px; max-width:38ch}
+.ask .btn{align-self:center}
 
 .faq{margin-top:34px}
 .faq .kicker{display:block; margin-bottom:14px}
-.faq details{background:var(--surface); border:1px solid var(--line); border-radius:14px; margin-bottom:9px;
-  transition:border-color .2s ease}
-.faq details[open]{border-color:var(--line-2)}
-.faq summary{list-style:none; cursor:pointer; padding:16px 44px 16px 18px; position:relative;
-  font-size:14.6px; font-weight:500; letter-spacing:-.01em; transition:color .2s ease}
+.faq details{border-top:1px solid var(--line)}
+.faq details:last-of-type{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none; cursor:pointer; padding:19px 42px 19px 0; position:relative;
+  font-size:14.8px; font-weight:500; letter-spacing:-.012em; transition:color .2s ease}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary:hover{color:var(--burnt)}
-.faq summary::after{content:""; position:absolute; right:20px; top:50%; width:8px; height:8px;
-  border-right:1.6px solid var(--ink-3); border-bottom:1.6px solid var(--ink-3);
-  transform:translateY(-70%) rotate(45deg); transition:transform .25s ease, border-color .2s ease}
-.faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg); border-color:var(--burnt)}
-.faq .ans{padding:0 18px 18px; color:var(--ink-2); font-size:14px; max-width:60ch}
+/* marcador +/−: dos hairlines, la vertical se retrae al abrir */
+.faq summary::before,.faq summary::after{content:""; position:absolute; right:4px; top:50%;
+  background:var(--ink-3); transition:transform .3s cubic-bezier(.2,.7,.3,1), background-color .2s ease}
+.faq summary::before{width:12px; height:1px; transform:translateY(-50%)}
+.faq summary::after{width:1px; height:12px; right:9.5px; transform:translateY(-50%) scaleY(1)}
+.faq details[open] summary::after{transform:translateY(-50%) scaleY(0)}
+.faq details[open] summary::before,.faq details[open] summary::after{background:var(--burnt)}
+.faq .ans{padding:0 40px 22px 0; color:var(--ink-2); font-size:14px; max-width:60ch}
 
 /* ---------- CIERRE ---------- */
 .close{position:relative; min-height:min(88svh,800px); display:flex; background:#241408; color:var(--on-photo)}
@@ -329,14 +383,18 @@ a{color:inherit}
 .foot .tag{font-size:12.5px; color:var(--on-photo-2)}
 
 /* ---------- WHATSAPP FLOTANTE ---------- */
-.fab{position:fixed; right:16px; bottom:16px; z-index:60; display:inline-flex; align-items:center; gap:9px;
-  height:54px; width:54px; justify-content:center; padding:0; border-radius:999px; border:0;
-  background:var(--wa); color:#fff; cursor:pointer; text-decoration:none;
-  box-shadow:0 8px 22px -8px rgba(37,211,102,.75);
-  transition:transform .2s cubic-bezier(.2,.7,.3,1), box-shadow .2s ease}
-.fab:hover{transform:translateY(-2px); box-shadow:0 14px 30px -10px rgba(37,211,102,.85)}
-.fab span{display:none; font-weight:600; font-size:15px}
-@media(min-width:900px){ .fab{right:26px; bottom:26px; width:auto; padding:0 22px 0 18px} .fab span{display:inline} }
+.fab{position:fixed; right:16px; bottom:16px; z-index:60; display:grid; grid-auto-flow:column;
+  align-items:center; height:52px; width:52px; justify-items:center; padding:0;
+  border-radius:var(--r-btn); border:1px solid rgba(255,252,247,.16);
+  background:var(--carbon); color:var(--warm-white); cursor:pointer; text-decoration:none;
+  box-shadow:0 10px 26px -12px rgba(23,15,4,.7);
+  transition:background-color .24s ease, border-color .24s ease}
+.fab:hover{background:#262421; border-color:rgba(255,252,247,.34)}
+.fab span{display:none; font-family:var(--mono); font-size:11px; letter-spacing:.15em; text-transform:uppercase}
+@media(min-width:900px){
+  .fab{right:26px; bottom:26px; width:auto; grid-template-columns:52px auto}
+  .fab span{display:inline; padding:0 18px 0 14px; border-left:1px solid rgba(255,252,247,.16); line-height:50px}
+}
 .fab[hidden]{display:none}
 
 /* ---------- SHEET / MINI-APP ---------- */
@@ -345,7 +403,7 @@ a{color:inherit}
   align-items:center; justify-content:center; padding:32px} }
 .sheet-panel{flex:1; display:flex; flex-direction:column; overflow:hidden; background:var(--bg);
   animation:rise .32s cubic-bezier(.2,.7,.3,1)}
-@media(min-width:900px){ .sheet-panel{flex:0 1 auto; width:min(540px,100%); max-height:100%; border-radius:24px;
+@media(min-width:900px){ .sheet-panel{flex:0 1 auto; width:min(540px,100%); max-height:100%; border-radius:12px;
   box-shadow:0 40px 90px -30px rgba(0,0,0,.6); border:1px solid var(--line)} }
 @keyframes rise{from{transform:translateY(20px); opacity:0} to{transform:none; opacity:1}}
 .sheet-head{display:flex; align-items:center; gap:12px; padding:13px 16px; border-bottom:1px solid var(--line); flex:none}
@@ -354,21 +412,21 @@ a{color:inherit}
 .sheet-foot{flex:none; padding:13px 20px calc(13px + env(safe-area-inset-bottom));
   border-top:1px solid var(--line); background:var(--bg)}
 @media(min-width:900px){ .sheet-foot{padding:15px 28px 20px} }
-.form-icon{width:44px; height:44px; border-radius:14px; display:grid; place-items:center;
+.form-icon{width:44px; height:44px; border-radius:var(--r-field); display:grid; place-items:center;
   background:var(--pick-bg); color:var(--burnt); border:1px solid rgba(255,148,24,.3); margin-bottom:16px}
 .sheet-body h2{font-size:clamp(1.6rem,5.4vw,2rem); margin-bottom:8px}
 .sheet-body .intro{color:var(--ink-2); font-size:14.5px; max-width:36ch}
 .form{display:flex; flex-direction:column; gap:20px; margin-top:26px}
 .field label,.field .lbl{display:block; font-size:13px; font-weight:600; margin-bottom:8px}
 .field input,.field textarea{width:100%; font:inherit; font-size:16px; color:var(--ink); background:var(--surface);
-  border:1px solid var(--line-2); border-radius:14px; padding:14px 15px;
+  border:1px solid var(--line-2); border-radius:var(--r-field); padding:14px 15px;
   transition:border-color .2s ease, box-shadow .2s ease; -webkit-appearance:none; appearance:none}
 .field textarea{min-height:96px; resize:vertical; line-height:1.5}
 .field input::placeholder,.field textarea::placeholder{color:var(--ink-3)}
 .field input:focus,.field textarea:focus{outline:none; border-color:var(--orange); box-shadow:0 0 0 4px rgba(255,148,24,.16)}
 .duo{display:grid; grid-template-columns:1fr 1fr; gap:10px}
 .opts{display:flex; flex-wrap:wrap; gap:8px}
-.opt{flex:1 1 auto; min-width:calc(50% - 4px); padding:13px 12px; border-radius:14px; background:var(--surface);
+.opt{flex:1 1 auto; min-width:calc(50% - 4px); padding:13px 12px; border-radius:var(--r-field); background:var(--surface);
   border:1px solid var(--line-2); color:var(--ink-2); font-size:14.5px; font-weight:500; cursor:pointer; text-align:center;
   transition:background-color .2s ease, border-color .2s ease, color .2s ease}
 .opt:hover{background:var(--surface-2)}
@@ -378,7 +436,18 @@ a{color:inherit}
 .field.bad .err{display:block}
 .foot-note{margin-top:11px; text-align:center; font-size:12px; color:var(--ink-3)}
 
+/* Revelado de entrada: arranca en el load, termina antes de 0,8 s. */
+@keyframes veil-up{from{clip-path:inset(0 0 100% 0); opacity:0} to{clip-path:inset(0 0 -10% 0); opacity:1}}
+.hero h1,.hero .sub,.hero .price,.hero-cta,.hero-meta{
+  animation:veil-up .62s cubic-bezier(.22,.72,.28,1) both}
+.hero .sub{animation-delay:.07s}
+.hero .price{animation-delay:.12s}
+.hero-cta{animation-delay:.17s}
+.hero-meta{animation-delay:.22s}
+
 @media (prefers-reduced-motion: reduce){
+  .hero h1,.hero .sub,.hero .price,.hero-cta,.hero-meta{animation:none}
+  .card::before{transition:none}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.001ms !important; transition-duration:.001ms !important}
   .card:hover .photo img{transform:none}
@@ -420,13 +489,14 @@ a{color:inherit}
   <div class="hero-in">
     <h1>Llegá a cualquier parte de Córdoba <em>en menos de una hora.</em></h1>
     <p class="sub">Vuelos privados y experiencias de vuelo para 1 o 2 pasajeros.</p>
-    <p class="price"><span>Vuelos desde</span> USD 50</p>
+    <p class="price"><span>Vuelos desde</span><b>USD 50</b></p>
 
     <div class="hero-cta">
-      <a class="btn btn-solar" href="#experiencias">Quiero volar <span aria-hidden="true">→</span></a>
+      <a class="btn btn-solar" href="#experiencias">
+        <span class="btn-l">Quiero volar</span><span class="btn-r"><svg width="15" height="12" viewBox="0 0 18 14" fill="none" aria-hidden="true"><path d="M1 7h15m0 0-5.5-5.5M16 7l-5.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
       <button class="btn btn-glass" data-open="bautismo">
-        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1.6 6.2h12.8V15H1.6V6.2Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M8 6.2V15M1 6.2h14M8 6.2S6.8 1 4.8 1a1.9 1.9 0 0 0 0 3.8M8 6.2S9.2 1 11.2 1a1.9 1.9 0 0 1 0 3.8" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
-        Regalar un bautismo de vuelo
+        <span class="btn-l"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1.6 6.2h12.8V15H1.6V6.2Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M8 6.2V15M1 6.2h14M8 6.2S6.8 1 4.8 1a1.9 1.9 0 0 0 0 3.8M8 6.2S9.2 1 11.2 1a1.9 1.9 0 0 1 0 3.8" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>Regalar un bautismo de vuelo</span><span class="btn-r"><svg width="15" height="12" viewBox="0 0 18 14" fill="none" aria-hidden="true"><path d="M1 7h15m0 0-5.5-5.5M16 7l-5.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </button>
     </div>
 
@@ -444,12 +514,14 @@ a{color:inherit}
         <span>Reserva directa</span>
       </li>
     </ul>
+    <span class="coord">31°25′S 64°11′O · Provincia de Córdoba</span>
   </div>
 </header>
 
 <!-- ELEGIR EXPERIENCIA -->
 <section class="section" id="experiencias">
   <div class="wrap">
+    <p class="label">Experiencias</p>
     <h2 class="h2">¿Qué querés hacer?</h2>
     <p class="lede">Dos formas de vivir el cielo.</p>
 
@@ -490,21 +562,22 @@ a{color:inherit}
 <!-- CÓMO FUNCIONA -->
 <section class="section steps" id="como-funciona">
   <div class="wrap">
+    <p class="label">Cómo funciona</p>
     <h2 class="h2">Así de simple</h2>
     <p class="lede">En pocos pasos, estás más cerca de volar.</p>
 
     <ol class="steplist">
       <li class="step">
-        <span class="num">01</span>
-        <div><h3>Elegís el vuelo</h3><p>Indicás cuándo y cómo querés volar.</p></div>
+        <span class="wp"></span>
+        <div><span class="num">01</span><h3>Elegís el vuelo</h3><p>Indicás cuándo y cómo querés volar.</p></div>
       </li>
       <li class="step">
-        <span class="num">02</span>
-        <div><h3>Consultamos disponibilidad</h3><p>Coordinamos los detalles directamente con vos.</p></div>
+        <span class="wp"></span>
+        <div><span class="num">02</span><h3>Consultamos disponibilidad</h3><p>Coordinamos los detalles directamente con vos.</p></div>
       </li>
       <li class="step">
-        <span class="num">03</span>
-        <div><h3>A volar</h3><p>Recibís la confirmación y toda la información necesaria para tu experiencia.</p></div>
+        <span class="wp"></span>
+        <div><span class="num">03</span><h3>A volar</h3><p>Recibís la confirmación y toda la información necesaria para tu experiencia.</p></div>
       </li>
     </ol>
 
@@ -534,6 +607,7 @@ a{color:inherit}
 <!-- INFORMACIÓN + FAQ -->
 <section class="section" id="antes-de-volar">
   <div class="wrap">
+    <p class="label">Antes de volar</p>
     <div class="panel">
       <div class="panel-head">
         <span class="panel-ic">
@@ -551,8 +625,7 @@ a{color:inherit}
       <h3>¿Tenés preguntas?</h3>
       <p>Podés consultarnos directamente por WhatsApp. Estamos para ayudarte.</p>
       <a class="btn btn-dark" href="#" data-wa="general">
-        <svg width="16" height="16" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M8.5 1.2c4 0 7.3 3 7.3 6.6 0 3.7-3.3 6.6-7.3 6.6-.9 0-1.8-.1-2.6-.4l-4 1.2 1.2-3.2A6.3 6.3 0 0 1 1.2 7.8c0-3.7 3.3-6.6 7.3-6.6Z" fill="#25D366"/></svg>
-        Hablar por WhatsApp
+        <span class="btn-l"><svg width="16" height="16" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M8.5 1.2c4 0 7.3 3 7.3 6.6 0 3.7-3.3 6.6-7.3 6.6-.9 0-1.8-.1-2.6-.4l-4 1.2 1.2-3.2A6.3 6.3 0 0 1 1.2 7.8c0-3.7 3.3-6.6 7.3-6.6Z" fill="#25D366"/></svg>Hablar por WhatsApp</span><span class="btn-r"><svg width="15" height="12" viewBox="0 0 18 14" fill="none" aria-hidden="true"><path d="M1 7h15m0 0-5.5-5.5M16 7l-5.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
     </div>
 
@@ -585,8 +658,7 @@ a{color:inherit}
 
     <h2>El cielo también es parte de tu historia.</h2>
     <a class="btn btn-white" href="#" data-wa="general">
-      <svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M8.5 1.2c4 0 7.3 3 7.3 6.6 0 3.7-3.3 6.6-7.3 6.6-.9 0-1.8-.1-2.6-.4l-4 1.2 1.2-3.2A6.3 6.3 0 0 1 1.2 7.8c0-3.7 3.3-6.6 7.3-6.6Z" fill="#25D366"/></svg>
-      Consultar por WhatsApp
+      <span class="btn-l"><svg width="16" height="16" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M8.5 1.2c4 0 7.3 3 7.3 6.6 0 3.7-3.3 6.6-7.3 6.6-.9 0-1.8-.1-2.6-.4l-4 1.2 1.2-3.2A6.3 6.3 0 0 1 1.2 7.8c0-3.7 3.3-6.6 7.3-6.6Z" fill="#25D366"/></svg>Consultar por WhatsApp</span><span class="btn-r"><svg width="15" height="12" viewBox="0 0 18 14" fill="none" aria-hidden="true"><path d="M1 7h15m0 0-5.5-5.5M16 7l-5.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
     </a>
 
     <div class="foot">
@@ -607,7 +679,7 @@ a{color:inherit}
 </div>
 
 <a class="fab" id="fab" href="#" data-wa="general" aria-label="Consultar por WhatsApp">
-  <svg width="24" height="24" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M8.5 1.2c4 0 7.3 3 7.3 6.6 0 3.7-3.3 6.6-7.3 6.6-.9 0-1.8-.1-2.6-.4l-4 1.2 1.2-3.2A6.3 6.3 0 0 1 1.2 7.8c0-3.7 3.3-6.6 7.3-6.6Z" fill="currentColor"/></svg>
+  <svg width="22" height="22" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M8.5 1.2c4 0 7.3 3 7.3 6.6 0 3.7-3.3 6.6-7.3 6.6-.9 0-1.8-.1-2.6-.4l-4 1.2 1.2-3.2A6.3 6.3 0 0 1 1.2 7.8c0-3.7 3.3-6.6 7.3-6.6Z" fill="#25D366"/></svg>
   <span>Consultar</span>
 </a>
 
@@ -744,8 +816,7 @@ a{color:inherit}
 
     <div class="sheet-foot">
       <button class="btn btn-solar btn-full" id="sheetSend">
-        <svg width="18" height="18" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M8.5 1.2c4 0 7.3 3 7.3 6.6 0 3.7-3.3 6.6-7.3 6.6-.9 0-1.8-.1-2.6-.4l-4 1.2 1.2-3.2A6.3 6.3 0 0 1 1.2 7.8c0-3.7 3.3-6.6 7.3-6.6Z" fill="#25D366"/></svg>
-        <span id="sheetSendLabel">Consultar vuelo por WhatsApp</span>
+        <span class="btn-l"><svg width="16" height="16" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M8.5 1.2c4 0 7.3 3 7.3 6.6 0 3.7-3.3 6.6-7.3 6.6-.9 0-1.8-.1-2.6-.4l-4 1.2 1.2-3.2A6.3 6.3 0 0 1 1.2 7.8c0-3.7 3.3-6.6 7.3-6.6Z" fill="#25D366"/></svg><span id="sheetSendLabel">Consultar vuelo por WhatsApp</span></span><span class="btn-r"><svg width="15" height="12" viewBox="0 0 18 14" fill="none" aria-hidden="true"><path d="M1 7h15m0 0-5.5-5.5M16 7l-5.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </button>
       <p class="foot-note">No se realizan pagos. La reserva se confirma personalmente.</p>
     </div>
