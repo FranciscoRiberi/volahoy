@@ -232,13 +232,14 @@ a{color:inherit}
 
 /* ---------- HERO ---------- */
 .hero{position:relative; min-height:min(90svh,820px); display:flex; align-items:flex-end; background:#241408}
-.hero .veil{background:linear-gradient(to bottom, rgba(18,10,4,.5) 0%, rgba(18,10,4,.06) 22%, rgba(18,10,4,.28) 52%, rgba(18,10,4,.86) 84%, rgba(18,10,4,.94) 100%)}
+.hero .veil{background:linear-gradient(to bottom, rgba(18,10,4,.46) 0%, rgba(18,10,4,.04) 22%, rgba(18,10,4,.2) 50%, rgba(18,10,4,.62) 76%, rgba(18,10,4,.88) 100%)}
 .hero-in{position:relative; z-index:10; width:100%; max-width:1120px; margin-inline:auto; padding:0 20px 28px; color:var(--on-photo)}
 @media(min-width:900px){ .hero-in{padding:0 40px 44px} }
 .hero h1{font-size:clamp(1.95rem,7.2vw,3.7rem); letter-spacing:-.04em; margin-bottom:16px; max-width:17ch}
 .hero h1 em{font-family:var(--serif); font-style:italic; font-weight:400;
   color:var(--sun); letter-spacing:-.01em}
-.hero .sub{color:var(--on-photo-2); font-size:clamp(.98rem,3.2vw,1.16rem); max-width:32ch; line-height:1.5}
+.hero .sub{color:var(--on-photo-2); font-size:clamp(.98rem,3.2vw,1.16rem); max-width:30ch;
+  line-height:1.5; text-wrap:balance}
 .price{display:inline-grid; grid-auto-flow:column; align-items:center; margin-top:20px;
   border:1px solid rgba(255,200,61,.4); border-radius:var(--r-btn); overflow:hidden;
   font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--sun)}
@@ -454,7 +455,6 @@ a{color:inherit}
 }
 </style>
 <style>
-  /* reset mínimo: en el artifact lo aportaba el contenedor */
   html{color-scheme:light dark}
   body{margin:0}
   [hidden]{display:none !important}
