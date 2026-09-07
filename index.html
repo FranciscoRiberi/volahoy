@@ -4,12 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#FFB52B">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 26 26%27%3E%3Crect width=%2726%27 height=%2726%27 rx=%274%27 fill=%27%23171717%27/%3E%3Ccircle cx=%2713%27 cy=%279.5%27 r=%274.6%27 fill=%27%23FFC83D%27/%3E%3Cpath d=%27M3.5 17.5h19%27 stroke=%27%23FFFCF7%27 stroke-width=%271.8%27 stroke-linecap=%27round%27/%3E%3Cpath d=%27M7 21.3h12%27 stroke=%27%23FFFCF7%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 opacity=%27.5%27/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="1254x1254" href="/assets/logo-volahoy.png">
+<link rel="apple-touch-icon" href="/assets/logo-volahoy.png">
 <link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">
 <title>Vuelos privados en Córdoba desde USD 50 | Volahoy</title>
 
 <meta name="description" content="Vuelos privados y bautismos de vuelo en Córdoba, Argentina. Llegá a cualquier parte de la provincia en menos de una hora. Vuelos desde USD 50 para 1 o 2 pasajeros. Consultá por WhatsApp.">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://volahoy.vercel.app/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_AR">
@@ -18,6 +19,11 @@
 <meta property="og:description" content="Llegá a cualquier parte de Córdoba en menos de una hora. Vuelos privados y bautismos de vuelo para 1 o 2 pasajeros.">
 <meta property="og:url" content="https://volahoy.vercel.app/">
 <meta property="og:image" content="https://volahoy.vercel.app/assets/hero.jpg">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="903">
+<meta property="og:image:alt" content="Vista de las sierras de Córdoba desde un vuelo de Volahoy">
+<meta name="twitter:image" content="https://volahoy.vercel.app/assets/hero.jpg">
+<meta name="twitter:image:alt" content="Vista de las sierras de Córdoba desde un vuelo de Volahoy">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Vuelos privados en Córdoba desde USD 50 | Volahoy">
 <meta name="twitter:description" content="Llegá a cualquier parte de Córdoba en menos de una hora. Vuelos privados y bautismos de vuelo.">
@@ -33,7 +39,9 @@
       "description": "Vuelos privados y bautismos de vuelo en la provincia de Córdoba, Argentina.",
       "url": "https://volahoy.vercel.app/",
       "telephone": "+5493385593545",
-      "sameAs": ["https://www.instagram.com/volahoy.arg/"],
+      "sameAs": [
+        "https://www.instagram.com/volahoy.arg/"
+      ],
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Córdoba",
@@ -44,13 +52,17 @@
         "@type": "State",
         "name": "Provincia de Córdoba, Argentina"
       },
-      "priceRange": "Desde USD 50"
+      "priceRange": "Desde USD 50",
+      "logo": "https://volahoy.vercel.app/assets/logo-volahoy.png",
+      "image": "https://volahoy.vercel.app/assets/hero.jpg"
     },
     {
       "@type": "Service",
       "name": "Vuelo privado en Córdoba",
       "serviceType": "Vuelo privado",
-      "provider": { "@id": "https://volahoy.vercel.app/#negocio" },
+      "provider": {
+        "@id": "https://volahoy.vercel.app/#negocio"
+      },
       "areaServed": "Provincia de Córdoba, Argentina",
       "description": "Vuelo privado para 1 o 2 pasajeros entre cualquier punto de la provincia de Córdoba, con origen, destino, fecha y horario a elección.",
       "offers": {
@@ -64,7 +76,9 @@
       "@type": "Service",
       "name": "Bautismo de vuelo en Córdoba",
       "serviceType": "Bautismo de vuelo",
-      "provider": { "@id": "https://volahoy.vercel.app/#negocio" },
+      "provider": {
+        "@id": "https://volahoy.vercel.app/#negocio"
+      },
       "areaServed": "Provincia de Córdoba, Argentina",
       "description": "Vuelo panorámico sobre las sierras de Córdoba para vivir o regalar, para 1 o 2 personas.",
       "offers": {
@@ -77,21 +91,73 @@
     {
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "¿Cuánto sale un vuelo?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Los vuelos arrancan en USD 50 por persona. El valor final depende del destino y la duración; te lo pasamos por WhatsApp junto con la disponibilidad." } },
-        { "@type": "Question", "name": "¿Cuántas personas pueden volar?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Los vuelos son para 1 o 2 pasajeros. Si son más, coordinamos vuelos consecutivos en el mismo día." } },
-        { "@type": "Question", "name": "¿Qué equipaje puedo llevar?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Una mochila o una valija pequeña por pasajero. El peso total incide en la planificación del vuelo, así que lo confirmamos junto con la reserva." } },
-        { "@type": "Question", "name": "¿A qué destinos puedo ir?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Toda la provincia de Córdoba y alrededores: Río Cuarto, Villa María, Laboulaye, Villa Carlos Paz, Villa General Belgrano, Mina Clavero, Ascochinga y provincias vecinas." } },
-        { "@type": "Question", "name": "¿Qué incluye el bautismo de vuelo?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Un vuelo panorámico sobre las sierras de Córdoba, con una charla previa sobre cómo será la experiencia y acompañamiento durante todo el vuelo." } },
-        { "@type": "Question", "name": "¿Qué pasa si el clima no permite volar?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Se reprograma sin costo para la fecha que mejor te quede. La seguridad define siempre la decisión de volar." } },
-        { "@type": "Question", "name": "¿Cómo se confirma una reserva?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Empezás la consulta por WhatsApp, coordinamos fecha y detalles, y recién ahí queda confirmada. La documentación se completa después, antes del vuelo." } }
+        {
+          "@type": "Question",
+          "name": "¿Cuánto sale un vuelo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Los vuelos arrancan en USD 50 por persona. El valor final depende del destino y la duración; te lo pasamos por WhatsApp junto con la disponibilidad."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuántas personas pueden volar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Los vuelos son para 1 o 2 pasajeros. Si son más, coordinamos vuelos consecutivos en el mismo día."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué equipaje puedo llevar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Una mochila o una valija pequeña por pasajero. El peso total incide en la planificación del vuelo, así que lo confirmamos junto con la reserva."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿A qué destinos puedo ir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Toda la provincia de Córdoba y alrededores: Río Cuarto, Villa María, Laboulaye, Villa Carlos Paz, Villa General Belgrano, Mina Clavero, Ascochinga y provincias vecinas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué incluye el bautismo de vuelo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un vuelo panorámico sobre las sierras de Córdoba, con una charla previa sobre cómo será la experiencia y acompañamiento durante todo el vuelo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué pasa si el clima no permite volar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Se reprograma sin costo para la fecha que mejor te quede. La seguridad define siempre la decisión de volar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo se confirma una reserva?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Empezás la consulta por WhatsApp, coordinamos fecha y detalles, y recién ahí queda confirmada. La documentación se completa después, antes del vuelo."
+          }
+        }
       ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://volahoy.vercel.app/#website",
+      "url": "https://volahoy.vercel.app/",
+      "name": "Volahoy",
+      "inLanguage": "es-AR",
+      "publisher": {
+        "@id": "https://volahoy.vercel.app/#negocio"
+      }
     }
   ]
 }
@@ -453,6 +519,35 @@ a{color:inherit}
   *,*::before,*::after{animation-duration:.001ms !important; transition-duration:.001ms !important}
   .card:hover .photo img{transform:none}
 }
+
+/* Marca y detalles de interacción */
+.brand-logo{width:64px;height:64px;object-fit:contain;flex:none}
+.mark{gap:7px}.mark b{font-size:13px;letter-spacing:.2em}
+.close .brand-logo{width:84px;height:84px}
+.topbar{padding-block:12px}
+.burger,.iconbtn{min-width:44px;min-height:44px}
+.burger{border:1px solid rgba(255,252,247,.3);border-radius:8px;background:rgba(20,12,5,.22);transition:background .2s,border-color .2s}
+.burger:hover{background:rgba(20,12,5,.5);border-color:var(--sun)}
+.hero-in{padding-top:120px}
+section[id]{scroll-margin-top:24px}
+.skip-link{position:fixed;top:12px;left:12px;z-index:120;padding:12px 18px;background:var(--sun);color:var(--carbon);transform:translateY(-160%)}
+.skip-link:focus{transform:none}
+::selection{background:var(--sun);color:var(--carbon)}
+.btn:focus-visible,.card:focus-visible{outline:3px solid var(--orange);outline-offset:5px}
+.nav:not([hidden]){animation:rise .3s ease both}
+.nav ul a{width:fit-content;background-image:linear-gradient(var(--burnt),var(--burnt));background-size:0 2px;background-repeat:no-repeat;background-position:0 100%;transition:color .2s,background-size .3s}
+.nav ul a:hover,.nav ul a:focus-visible{background-size:100% 2px}
+.faq details{transition:border-color .25s,background-color .25s}
+.faq details[open]{border-color:var(--pick-line);background:var(--pick-bg)}
+details[open] .ans{animation:rise .25s ease}
+.foot-ic a{min-width:44px;min-height:44px}
+@media(hover:hover){.card:focus-visible .photo img{transform:scale(1.035)}.step:hover .wp{box-shadow:0 0 0 8px var(--pick-bg)}.wp{transition:box-shadow .3s}}
+@media(prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.3,1)}
+  .reveal.is-visible{opacity:1;transform:none}
+}
+@media(max-width:380px){.duo{grid-template-columns:1fr}.hero-meta span{letter-spacing:.05em}.mark b{font-size:12px}}
+
 </style>
 <style>
   html{color-scheme:light dark}
@@ -461,7 +556,8 @@ a{color:inherit}
 </style>
 </head>
 <body>
-<div id="site">
+<a class="skip-link" href="#experiencias">Saltar al contenido</a>
+<main id="site">
 
 <!-- HERO -->
 <header class="hero" id="top">
@@ -472,14 +568,10 @@ a{color:inherit}
 
   <div class="topbar">
     <a class="mark" href="#top" aria-label="Volá Hoy, inicio">
-      <svg width="20" height="20" viewBox="0 0 26 26" fill="none" aria-hidden="true">
-        <circle cx="13" cy="9.5" r="4.6" fill="#FFC83D"/>
-        <path d="M2.5 17.5h21" stroke="#FFFCF7" stroke-width="1.7" stroke-linecap="round"/>
-        <path d="M6.5 21.5h13" stroke="#FFFCF7" stroke-width="1.7" stroke-linecap="round" opacity=".5"/>
-      </svg>
+      <img class="brand-logo" src="assets/logo-volahoy.png" width="64" height="64" alt="" decoding="async">
       <b>Volahoy</b>
     </a>
-    <button class="burger" id="navOpen" aria-label="Abrir menú" aria-expanded="false">
+    <button class="burger" id="navOpen" aria-controls="nav" aria-label="Abrir menú" aria-expanded="false">
       <svg width="20" height="13" viewBox="0 0 20 13" fill="none" aria-hidden="true">
         <path d="M0 1h20M0 6.5h20M0 12h13" stroke="currentColor" stroke-width="1.7"/>
       </svg>
@@ -522,7 +614,7 @@ a{color:inherit}
 <section class="section" id="experiencias">
   <div class="wrap">
     <p class="label">Experiencias</p>
-    <h2 class="h2">¿Qué querés hacer?</h2>
+    <h2 class="h2">Vuelos privados y bautismos en Córdoba</h2>
     <p class="lede">Dos formas de vivir el cielo.</p>
 
     <div class="cards">
@@ -591,11 +683,7 @@ a{color:inherit}
   <div class="veil"></div>
   <div class="exp-in">
     <span class="mark" style="align-self:flex-start">
-      <svg width="18" height="18" viewBox="0 0 26 26" fill="none" aria-hidden="true">
-        <circle cx="13" cy="9.5" r="4.6" fill="#FFC83D"/>
-        <path d="M2.5 17.5h21" stroke="#FFFCF7" stroke-width="1.7" stroke-linecap="round"/>
-        <path d="M6.5 21.5h13" stroke="#FFFCF7" stroke-width="1.7" stroke-linecap="round" opacity=".5"/>
-      </svg>
+      <img class="brand-logo" src="assets/logo-volahoy.png" width="64" height="64" alt="" decoding="async">
       <b>Volahoy</b>
     </span>
     <h2 style="margin-top:auto">Una nueva forma de conectar Córdoba.</h2>
@@ -624,7 +712,7 @@ a{color:inherit}
       </span>
       <h3>¿Tenés preguntas?</h3>
       <p>Podés consultarnos directamente por WhatsApp. Estamos para ayudarte.</p>
-      <a class="btn btn-dark" href="#" data-wa="general">
+      <a class="btn btn-dark" href="https://wa.me/5493385593545" data-wa="general">
         <span class="btn-l"><svg width="16" height="16" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M8.5 1.2c4 0 7.3 3 7.3 6.6 0 3.7-3.3 6.6-7.3 6.6-.9 0-1.8-.1-2.6-.4l-4 1.2 1.2-3.2A6.3 6.3 0 0 1 1.2 7.8c0-3.7 3.3-6.6 7.3-6.6Z" fill="#25D366"/></svg>Hablar por WhatsApp</span><span class="btn-r"><svg width="15" height="12" viewBox="0 0 18 14" fill="none" aria-hidden="true"><path d="M1 7h15m0 0-5.5-5.5M16 7l-5.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
     </div>
@@ -648,16 +736,12 @@ a{color:inherit}
   <div class="veil"></div>
   <div class="close-in">
     <span class="mark">
-      <svg width="18" height="18" viewBox="0 0 26 26" fill="none" aria-hidden="true">
-        <circle cx="13" cy="9.5" r="4.6" fill="#FFC83D"/>
-        <path d="M2.5 17.5h21" stroke="#FFFCF7" stroke-width="1.7" stroke-linecap="round"/>
-        <path d="M6.5 21.5h13" stroke="#FFFCF7" stroke-width="1.7" stroke-linecap="round" opacity=".5"/>
-      </svg>
+      <img class="brand-logo" src="assets/logo-volahoy.png" width="64" height="64" alt="" decoding="async">
       <b>Volahoy</b>
     </span>
 
     <h2>El cielo también es parte de tu historia.</h2>
-    <a class="btn btn-white" href="#" data-wa="general">
+    <a class="btn btn-white" href="https://wa.me/5493385593545" data-wa="general">
       <span class="btn-l"><svg width="16" height="16" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M8.5 1.2c4 0 7.3 3 7.3 6.6 0 3.7-3.3 6.6-7.3 6.6-.9 0-1.8-.1-2.6-.4l-4 1.2 1.2-3.2A6.3 6.3 0 0 1 1.2 7.8c0-3.7 3.3-6.6 7.3-6.6Z" fill="#25D366"/></svg>Consultar por WhatsApp</span><span class="btn-r"><svg width="15" height="12" viewBox="0 0 18 14" fill="none" aria-hidden="true"><path d="M1 7h15m0 0-5.5-5.5M16 7l-5.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
     </a>
 
@@ -668,7 +752,7 @@ a{color:inherit}
         <a href="https://www.instagram.com/volahoy.arg/" target="_blank" rel="noopener" aria-label="Instagram @volahoy.arg">
           <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true"><rect x="1" y="1" width="16" height="16" rx="5" stroke="currentColor" stroke-width="1.4"/><circle cx="9" cy="9" r="3.5" stroke="currentColor" stroke-width="1.4"/><circle cx="13.4" cy="4.6" r="1" fill="currentColor"/></svg>
         </a>
-        <a href="#" data-wa="general" aria-label="WhatsApp">
+        <a href="https://wa.me/5493385593545" data-wa="general" aria-label="WhatsApp">
           <svg width="16" height="16" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M8.5 1.2c4 0 7.3 3 7.3 6.6 0 3.7-3.3 6.6-7.3 6.6-.9 0-1.8-.1-2.6-.4l-4 1.2 1.2-3.2A6.3 6.3 0 0 1 1.2 7.8c0-3.7 3.3-6.6 7.3-6.6Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -676,9 +760,9 @@ a{color:inherit}
     </div>
   </div>
 </section>
-</div>
+</main>
 
-<a class="fab" id="fab" href="#" data-wa="general" aria-label="Consultar por WhatsApp">
+<a class="fab" id="fab" href="https://wa.me/5493385593545" data-wa="general" aria-label="Consultar por WhatsApp">
   <svg width="22" height="22" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M8.5 1.2c4 0 7.3 3 7.3 6.6 0 3.7-3.3 6.6-7.3 6.6-.9 0-1.8-.1-2.6-.4l-4 1.2 1.2-3.2A6.3 6.3 0 0 1 1.2 7.8c0-3.7 3.3-6.6 7.3-6.6Z" fill="#25D366"/></svg>
   <span>Consultar</span>
 </a>
@@ -686,11 +770,7 @@ a{color:inherit}
 <nav class="nav" id="nav" hidden aria-label="Menú principal">
   <div class="nav-top">
     <span class="mark">
-      <svg width="20" height="20" viewBox="0 0 26 26" fill="none" aria-hidden="true">
-        <circle cx="13" cy="9.5" r="4.6" fill="#FFC83D"/>
-        <path d="M2.5 17.5h21" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-        <path d="M6.5 21.5h13" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" opacity=".5"/>
-      </svg>
+      <img class="brand-logo" src="assets/logo-volahoy.png" width="64" height="64" alt="" decoding="async">
       <b>Volahoy</b>
     </span>
     <button class="iconbtn" id="navClose" aria-label="Cerrar menú">
@@ -701,7 +781,7 @@ a{color:inherit}
     <li><a href="#experiencias" data-nav>Experiencias</a></li>
     <li><a href="#como-funciona" data-nav>Cómo funciona</a></li>
     <li><a href="#antes-de-volar" data-nav>Antes de volar</a></li>
-    <li><a href="#" data-wa="general">WhatsApp</a></li>
+    <li><a href="https://wa.me/5493385593545" data-wa="general">WhatsApp</a></li>
   </ul>
   <p class="nav-foot">Córdoba · Experiencias privadas · Volá diferente</p>
 </nav>
@@ -728,7 +808,7 @@ a{color:inherit}
             <div class="field" id="f-fecha">
               <label for="p-fecha">¿Cuándo querés volar?</label>
               <input type="date" id="p-fecha">
-              <p class="err">Elegí una fecha para poder consultar.</p>
+              <p class="err">Elegí una fecha de hoy en adelante para consultar.</p>
             </div>
             <div class="field">
               <label for="p-hora">Horario aproximado</label>
@@ -780,7 +860,7 @@ a{color:inherit}
             <div class="field" id="f-bfecha">
               <label for="b-fecha">Fecha deseada</label>
               <input type="date" id="b-fecha">
-              <p class="err">Elegí una fecha para poder consultar.</p>
+              <p class="err">Elegí una fecha de hoy en adelante para consultar.</p>
             </div>
             <div class="field">
               <label for="b-hora">Horario preferido</label>
@@ -879,6 +959,7 @@ function openSheet(view){
   sendLabel.textContent = view === "privado" ? "Consultar vuelo por WhatsApp" : "Consultar disponibilidad por WhatsApp";
   kicker.textContent = view === "privado" ? "Vuelo privado" : "Bautismo de vuelo";
   sheet.querySelector(".sheet-panel").setAttribute("aria-labelledby", "t-" + view);
+  document.getElementById("site").inert = true;
   sheet.hidden = false;
   fab.hidden = true;
   document.documentElement.classList.add("is-locked");
@@ -886,6 +967,7 @@ function openSheet(view){
   document.getElementById("sheetBack").focus();
 }
 function closeSheet(){
+  document.getElementById("site").inert = false;
   sheet.hidden = true;
   fab.hidden = false;
   document.documentElement.classList.remove("is-locked");
@@ -898,13 +980,19 @@ document.getElementById("sheetBack").addEventListener("click", closeSheet);
 sheet.addEventListener("click", function(e){ if (e.target === sheet) closeSheet(); });
 
 function openNav(){
+  document.getElementById("site").inert = true;
+  fab.hidden = true;
   nav.hidden = false;
   document.documentElement.classList.add("is-locked");
   document.getElementById("navOpen").setAttribute("aria-expanded","true");
   document.getElementById("navClose").focus();
 }
 function closeNav(){
+  var wasOpen = !nav.hidden;
+  document.getElementById("site").inert = false;
+  fab.hidden = false;
   nav.hidden = true;
+  if (wasOpen) document.getElementById("navOpen").focus();
   document.documentElement.classList.remove("is-locked");
   document.getElementById("navOpen").setAttribute("aria-expanded","false");
 }
@@ -928,7 +1016,9 @@ function fmtDate(v){
 }
 function val(id){ return document.getElementById(id).value.trim(); }
 function mark(fieldId, bad){
-  document.getElementById(fieldId).classList.toggle("bad", bad);
+  var field = document.getElementById(fieldId);
+  field.classList.toggle("bad", bad);
+  field.querySelector("input").setAttribute("aria-invalid", String(bad));
   return bad;
 }
 
@@ -942,7 +1032,7 @@ document.querySelectorAll('[data-wa="general"]').forEach(function(a){
 
 document.getElementById("sheetSend").addEventListener("click", function(){
   if (current === "privado"){
-    var b1 = mark("f-fecha",   !val("p-fecha"));
+    var b1 = mark("f-fecha",   !val("p-fecha") || !document.getElementById("p-fecha").validity.valid);
     var b2 = mark("f-origen",  !val("p-origen"));
     var b3 = mark("f-destino", !val("p-destino"));
     var first = b1 ? "p-fecha" : b2 ? "p-origen" : b3 ? "p-destino" : null;
@@ -960,7 +1050,7 @@ document.getElementById("sheetSend").addEventListener("click", function(){
       "Comentarios: " + (com || "—")
     );
   } else {
-    var a1 = mark("f-bfecha", !val("b-fecha"));
+    var a1 = mark("f-bfecha", !val("b-fecha") || !document.getElementById("b-fecha").validity.valid);
     var a2 = mark("f-nombre", !val("b-nombre"));
     var f2 = a1 ? "b-fecha" : a2 ? "b-nombre" : null;
     if (f2){ document.getElementById(f2).focus(); return; }
@@ -981,8 +1071,30 @@ document.getElementById("sheetSend").addEventListener("click", function(){
 ["p-fecha","p-origen","p-destino","b-fecha","b-nombre"].forEach(function(id){
   document.getElementById(id).addEventListener("input", function(e){
     e.target.closest(".field").classList.remove("bad");
+    e.target.removeAttribute("aria-invalid");
   });
 });
+
+// Entrada progresiva: contenido visible si no hay soporte o se reduce el movimiento.
+if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  var revealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target);}});
+  }, {threshold:0.08});
+  document.querySelectorAll('.cards, .step, .section .h2, .faq').forEach(function(el){el.classList.add('reveal');revealObserver.observe(el);});
+}
+document.querySelectorAll('.field .err').forEach(function(el){
+  el.id = el.parentElement.id + '-error';
+  el.parentElement.querySelector('input').setAttribute('aria-describedby', el.id);
+});
+document.addEventListener('keydown', function(e){
+  var modal = !sheet.hidden ? sheet : !nav.hidden ? nav : null;
+  if (!modal || e.key !== 'Tab') return;
+  var items = Array.from(modal.querySelectorAll('a[href],button,input,textarea,select,[tabindex="0"]')).filter(function(el){return !el.disabled && el.getClientRects().length;});
+  var first = items[0], last = items[items.length-1];
+  if(e.shiftKey && document.activeElement === first){e.preventDefault();last.focus();}
+  else if(!e.shiftKey && document.activeElement === last){e.preventDefault();first.focus();}
+});
+
 </script>
 </body>
 </html>
