@@ -1,6 +1,6 @@
 # Volahoy
 
-Landing de **Volahoy** — vuelos privados y bautismos de vuelo en la provincia de Córdoba, Argentina.
+Landing de **Volahoy** — vuelos privados y vuelos de bautismo en la provincia de Córdoba, Argentina.
 Sitio estático, sin build. La consulta termina en WhatsApp; no hay pagos ni reservas automáticas.
 
 ## Estructura
